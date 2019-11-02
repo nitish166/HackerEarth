@@ -34,6 +34,8 @@ vector<int>* sieve()
 
 void printPrimes(long long l, long long r, vector<int>* & primes)
 {
+	// if(l<=1)
+	// 	return false;
 	bool isPrime[r-l+1];
 	for(int i=0;i<=r-l;i++)
 	{
@@ -43,16 +45,23 @@ void printPrimes(long long l, long long r, vector<int>* & primes)
 	for(int i=0;primes->at(i)*(long long)primes->at(i)<=r;i++)
 	{
 		int currPrime=primes->at(i);
+
+
+
 		long long base = (l/currPrime)*(currPrime);
 		if(base<l)
 		{
 			base=base+currPrime;
 		}
 
+
+
 		for(long long j=base;j<=r;j+=currPrime)
 		{
 			isPrime[j-l]=false;
 		}
+
+
 		if(base==currPrime)
 		{
 			isPrime[base-l]=true;
